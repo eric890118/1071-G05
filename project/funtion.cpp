@@ -162,7 +162,7 @@ void check(int prizeN[], int ownN[], int n, int ownprize[], int mn[]){
     }
 
     mn[0] = mn[1] + mn[2] + mn[3] + mn[4] + mn[5] + mn[6] + mn[7] + mn[8];
-    printf("%d\n\n",mn[0]);
+    printf("\n",mn[0]);
 
 }
 
@@ -171,14 +171,14 @@ void money(int award, int ownprize[], int mn[]){
     else{
         printf("The number of prize: %d\n",mn[0]);
         printf("The number of invoice\n");
-        for(int temp=1;temp<=mn[0];temp++){
-            for(int i=1;i<=mn[0]*10;i++){
-                if(i%10==1||i%10==2) printf("%c",ownprize[i]);
-                if(i%10==2) printf("-");
-                if(i%10!=1&&i%10!=2) printf("%d",ownprize[i]);
-                if(i%10==0) printf("\n");
-            }
+
+        for(int i=1;i<=mn[0]*10;i++){
+            if(i%10==1||i%10==2) printf("%c",ownprize[i]);
+            if(i%10==2) printf("-");
+            if(i%10!=1&&i%10!=2) printf("%d",ownprize[i]);
+            if(i%10==0) printf("\n");
         }
+
         printf("\n");
         award=mn[1]*10000000 + mn[2]*2000000 + mn[3]*200000 + mn[4]*40000 + mn[5]*10000 + mn[6]*4000 + mn[7]*1000 + mn[8]*200;
         printf("Total Invoice Prize: %d\n",award);
