@@ -30,7 +30,7 @@ void inv(int n){
 
 }
 
-void check(int prize[]){
+void check(int prizeN[]){
 
 }
 
