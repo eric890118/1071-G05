@@ -28,19 +28,39 @@ void invoice(int prizeN[]){
         }
         if(choice == 1) printf(" <Last 3 Number>\n");       //N=40~42,43~45
     }
-    for(N=0;N<=7;N++)
-        printf("%d",prizeN[N]);
     printf("\n");
 }
 
-void inv(int n){
+void owninv(int n, int ownN[]){
+    int choice;
+    int N=1;
+    printf("Input the number of invoice sheets.\n");
+    printf("=> ");
+    scanf("%d", &n);
+    printf("\n");
+    printf("1. Show the invoice number.\n");
+    printf("2. Needn't show.\n");
+    printf("=> ");
+    scanf("%d", &choice);
+    for(int a=0;a<n;a++){
+        ownN[N] = rand()%26+65;
+        N++;
+        ownN[N] = rand()%26+65;
+        N++;
+        if(choice == 1) printf("%c%c-",ownN[N-2], ownN[N-1]);
+        for(int i=1 ; i<=8 ; i++){
+            ownN[N] = rand()%10;
+            if(choice == 1) printf("%d",ownN[N]);
+            N++;
+        }
+        if(choice == 1) printf("\n");
+    }
+}
+
+void check(int prizeN[], int ownN[]){
 
 }
 
-void check(int prizeN[]){
-
-}
-
-void money(int award){
+void money(int prizeN[], int ownN[]){
 
 }
