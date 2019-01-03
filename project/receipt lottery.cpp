@@ -82,7 +82,8 @@ void check(int award[],int own[],int n){
 	int sp2 = 0;
 	int sp = 0;
 	int pri[5];
-	int a = 0,b = 0,c = 0,d = 0,e = 0,f = 0,g = 0;
+	int temp[4];
+	int a = 0,b = 0,c = 0,d = 0,e = 0,f = 0;
 	/*for(int i=0;i<6;i++){
 		pri[i] = 0;
 	}
@@ -102,20 +103,23 @@ void check(int award[],int own[],int n){
 			for(int k=1; k<=100000; k*=10){
 				if(award[j]%(1000*k)==own[i]%(1000*k)){
 					if(k==1){
-						//printf("%d",a);
 						pri[++a] = own[i];
-						printf("pr = %08d\n",pri[a]);
+						printf("%08d\n",pri[a]);
 					}
 					if(k==10)b++;
 					if(k==100)c++;
-					if(k==100)d++;
-					if(k==1000)e++;
-					if(k==10000)f++;
-					if(k==100000)g++;					
+					if(k==1000)d++;
+					if(k==10000)e++;
+					if(k==100000)f++;				
 				}
 			}
 		}
 	}
+	temp[0]=a-b-c-d-e-f;
+	temp[1]=b-c-d-e-f;
+	temp[2]=c-d-e-f;
+	temp[3]=d-e-f;
+	temp[4]=e-f;
 	for(int j=5; j<8; j++){			//last 3 number
 		for(int i=0;i<n;i++){
 			if(award[j]==own[i]%1000){
@@ -127,7 +131,9 @@ void check(int award[],int own[],int n){
 	if(last+a+sp>0)	
 		printf("You win %d receipt lottery.\n",last+a+sp);
 	if(last+a+sp==0)
-		printf("No prize.");
+		printf("No prize.\n");
+	printf("You win %d dollars.",
+			sp1*10000000+sp2*2000000+f*200000+temp[4]*40000+temp[3]*10000+temp[2]*4000+temp[1]*1000+(temp[0]+last)*200);
 }
 
 int main(){
@@ -143,8 +149,3 @@ int main(){
 	owninv(own,N);			
 	check(award,own,N);
 }
-
-		
-		
-
-
