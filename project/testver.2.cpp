@@ -82,8 +82,8 @@ void check(int award[],int own[],int n){
 	int sp2 = 0;
 	int sp = 0;
 	int pri[5];
-	int temp[4];
-	int a = 0,b = 0,c = 0,d = 0,e = 0,f = 0;
+	unsigned int temp[4];
+	int a = 0,b = 0,c = 0,d = 0,e = 0,f = 0,g = 0;
 	/*for(int i=0;i<6;i++){
 		pri[i] = 0;
 	}
@@ -102,8 +102,10 @@ void check(int award[],int own[],int n){
 		for(int i=0;i<n;i++){
 			for(int k=1; k<=100000; k*=10){
 				if(award[j]%(1000*k)==own[i]%(1000*k)){
+					g++;
 					if(k==1){
-						pri[++a] = own[i];
+						a++;
+						pri[a] = own[i];
 						printf("%08d\n",pri[a]);
 					}
 					if(k==10)b++;           //a 1
@@ -115,10 +117,14 @@ void check(int award[],int own[],int n){
 			}
 		}
 	}
-	temp[0]=a-b-2*c-3*d-4*e-5*f;
-	temp[1]=b-c-2*d-3*e-4*f;
-	temp[2]=c-d-2*e-3*f;
-	temp[3]=d-e-2*f;
+	//printf("g = %d\n",g);
+	printf("a = %d\n",a);
+	printf("b = %d\n",b);
+	printf("c = %d\n\n",c);
+	temp[0]=a-b;
+	temp[1]=b-c;
+	temp[2]=c-d;
+	temp[3]=d-e;
 	temp[4]=e-f;
 	for(int i=0;i<5;i++){
 		printf("%d\n",temp[i]);
@@ -152,3 +158,4 @@ int main(){
 	owninv(own,1000);			
 	check(award,own,1000);
 }
+
