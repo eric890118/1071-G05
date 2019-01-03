@@ -7,8 +7,8 @@ void invoice(int award[]){
 	int a = 0;
 	int b = 0;
 	int choice;
-	printf("1. Show the winning numbers.\n");
-	printf("2. Needn't show and go to next.\n");
+	printf("Show the winning numbers?\n");
+	printf("<1. YES.      2. NO.>\n");
 	printf("--> ");
 	scanf("%d", &choice);
 	for(int c=1; c<=5; c++){
@@ -54,8 +54,8 @@ void owninv(int own[],int n){
 	int a = 0;
 	int temp = 0;
 	int choice;
-	printf("1. Show your receipts.\n");
-	printf("2. Needn't show and go to next.\n");
+	printf("Show your receipts?\n");
+	printf("<1. YES.      2. NO.>\n");
 	printf("--> ");
 	scanf("%d", &choice);
 
@@ -132,7 +132,7 @@ void check(int award[],int own[],int n){
 		printf("You win %d receipt lottery.\n",last+a+sp);
 	if(last+a+sp==0)
 		printf("No prize.\n");
-	printf("You win %d dollars.",
+	printf("You win %d dollars.\n",
 			sp1*10000000+sp2*2000000+f*200000+temp[4]*40000+temp[3]*10000+temp[2]*4000+temp[1]*1000+(temp[0]+last)*200);
 }
 
