@@ -103,7 +103,8 @@ void check(int award[],int own[],int n){
 			for(int k=1; k<=100000; k*=10){
 				if(award[j]%(1000*k)==own[i]%(1000*k)){
 					if(k==1){
-						pri[++a] = own[i];
+						a++;
+						pri[a] = own[i];
 						printf("%08d\n",pri[a]);
 					}
 					if(k==10)b++;
@@ -115,10 +116,10 @@ void check(int award[],int own[],int n){
 			}
 		}
 	}
-	temp[0]=a-b-c-d-e-f;
-	temp[1]=b-c-d-e-f;
-	temp[2]=c-d-e-f;
-	temp[3]=d-e-f;
+	temp[0]=a-b;
+	temp[1]=b-c;
+	temp[2]=c-d;
+	temp[3]=d-e;
 	temp[4]=e-f;
 	for(int j=5; j<8; j++){			//last 3 number
 		for(int i=0;i<n;i++){
