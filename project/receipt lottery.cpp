@@ -7,7 +7,7 @@ void invoice(int award[]){
 	int a = 0;
 	int b = 0;
 	int choice;
-	printf("1. Show the prize number.\n");
+	printf("1. Show the winning numbers.\n");
 	printf("2. Needn't show and go to next.\n");
 	printf("--> ");
 	scanf("%d", &choice);
@@ -33,6 +33,7 @@ void invoice(int award[]){
 		}
 	}
 	if(choice==1){
+		printf("Winning number:\n");
 		for(int j=0;j<5;j++){
 			printf("%08d", award[j]);
 			if(j==0)printf("    <Special award>(10 million)\n");
@@ -53,7 +54,7 @@ void owninv(int own[],int n){
 	int a = 0;
 	int temp = 0;
 	int choice;
-	printf("1. Show your invoice.\n");
+	printf("1. Show your receipts.\n");
 	printf("2. Needn't show and go to next.\n");
 	printf("--> ");
 	scanf("%d", &choice);
@@ -76,17 +77,41 @@ void owninv(int own[],int n){
 }
 
 void check(int award[],int own[],int n){
-	int aw = 0;
+	int last = 0;
+	int sp1 = 0;
+	int sp2 = 0;
+	int sp = 0;
+	int pri[5];
+	int a = 0,b = 0,c = 0,d = 0,e = 0,f = 0,g = 0;
+	/*for(int i=0;i<6;i++){
+		pri[i] = 0;
+	}
+	*/
 	for(int j=0; j<2; j++){			//specical
 		for(int i=0;i<n;i++){
-		if(award[j]==own[i])aw++;
+			if(award[j]==own[i]){
+				sp++;
+				printf("%08d\n", own[i]);
+				if(j==0)sp1++;
+				if(j==1)sp2++;			
+			}
 		}
 	}
 	for(int j=2; j<5; j++){			//prize
 		for(int i=0;i<n;i++){
 			for(int k=1; k<=100000; k*=10){
 				if(award[j]%(1000*k)==own[i]%(1000*k)){
-					printf("pr = %08d\n",own[i]);	
+					if(k==1){
+						//printf("%d",a);
+						pri[++a] = own[i];
+						printf("pr = %08d\n",pri[a]);
+					}
+					if(k==10)b++;
+					if(k==100)c++;
+					if(k==100)d++;
+					if(k==1000)e++;
+					if(k==10000)f++;
+					if(k==100000)g++;					
 				}
 			}
 		}
@@ -95,17 +120,19 @@ void check(int award[],int own[],int n){
 		for(int i=0;i<n;i++){
 			if(award[j]==own[i]%1000){
 				printf("%08d\n",own[i]);
-				aw++;	
+				last++;	
 			}
 		}
 	}
-	printf("%d\n",aw);
+	if(last+a+sp>0)	
+		printf("You win %d receipt lottery.\n",last+a+sp);
+	if(last+a+sp==0)
+		printf("No prize.");
 }
 
 int main(){
     srand(time(NULL));
     int N;
-    int num;
 	int award[8];
 	int own[1000];
 	
@@ -114,9 +141,7 @@ int main(){
     printf("Input the number of invoice sheets n(Max input 1000):  ");
     scanf("%d", &N);
 	owninv(own,N);			
-    //inv(num);
 	check(award,own,N);
-	//money(award);
 }
 
 		
